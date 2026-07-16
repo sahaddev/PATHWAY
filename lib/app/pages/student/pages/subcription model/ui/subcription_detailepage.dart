@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_way_flu/app/core/constants/constants.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
 import 'package:path_way_flu/app/data/model/lession.dart';
-
 
 class SubcriptionDeatilePage extends StatelessWidget {
   final Lesson lesson;
@@ -42,10 +41,10 @@ class SubcriptionDeatilePage extends StatelessWidget {
                   child: Column(
                     children: [
                       const SizedBox(height: 30),
-                       CircleAvatar(
+                      CircleAvatar(
                         radius: 45,
-                        backgroundImage:
-                            NetworkImage('${AuthApi.baseUrlImage}${lesson.profileImage}'),
+                        backgroundImage: NetworkImage(
+                            '${AuthApi.baseUrlImage}${lesson.profileImage}'),
                       ),
                       const SizedBox(height: 15),
                       Text(
@@ -78,7 +77,7 @@ class SubcriptionDeatilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                 AppLocalizations.of(context).price,
+                                AppLocalizations.of(context).price,
                                 style: kSubtitleTextSyule.copyWith(
                                     color: Colors.grey[400]),
                               ),
@@ -99,7 +98,7 @@ class SubcriptionDeatilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                 AppLocalizations.of(context).cycle,
+                                AppLocalizations.of(context).cycle,
                                 style: kSubtitleTextSyule.copyWith(
                                     color: Colors.grey[400]),
                               ),
@@ -114,12 +113,12 @@ class SubcriptionDeatilePage extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                 AppLocalizations.of(context).type,
+                                AppLocalizations.of(context).type,
                                 style: kSubtitleTextSyule.copyWith(
                                     color: Colors.grey[400]),
                               ),
                               Text(
-                                 AppLocalizations.of(context).individual,
+                                AppLocalizations.of(context).individual,
                                 style: kSubheadingextStyle.copyWith(
                                     height: 0, fontWeight: FontWeight.w400),
                               ),
@@ -138,8 +137,8 @@ class SubcriptionDeatilePage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStatePropertyAll(Theme.of(context).colorScheme.primary)),
+                      backgroundColor: MaterialStatePropertyAll(
+                          Theme.of(context).colorScheme.primary)),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

@@ -11,7 +11,7 @@ import 'package:path_way_flu/app/pages/teacher/pages/application%20from/ui/appli
 import 'package:path_way_flu/app/pages/teacher/pages/profile%20edit/ui/teacher_profile_edit.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/setting_appbar.dart';
 import 'package:path_way_flu/main.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 
 class TeacherSettings extends StatelessWidget {
   const TeacherSettings({super.key});

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 
 class BuildHomeTopBox extends StatelessWidget {
   const BuildHomeTopBox({
@@ -14,8 +13,7 @@ class BuildHomeTopBox extends StatelessWidget {
       height: 150,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-          color: Colors.grey[100],
-          borderRadius: BorderRadius.circular(12)),
+          color: Colors.grey[100], borderRadius: BorderRadius.circular(12)),
       child: Row(
         children: [
           Padding(
@@ -25,8 +23,7 @@ class BuildHomeTopBox extends StatelessWidget {
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                     maxHeight: double.infinity,
-                    maxWidth:
-                        MediaQuery.of(context).size.width * .40),
+                    maxWidth: MediaQuery.of(context).size.width * .40),
                 child: const Image(
                   image: AssetImage("asset/images/math image.jpg"),
                 ),
@@ -78,16 +75,13 @@ class BuildHomeTopBox extends StatelessWidget {
                         onPressed: () {},
                         style: ButtonStyle(
                             backgroundColor: MaterialStatePropertyAll(
-                                Theme.of(context)
-                                    .colorScheme
-                                    .secondary),
+                                Theme.of(context).colorScheme.secondary),
                             side: const MaterialStatePropertyAll(
-                                BorderSide(
-                                    width: 1, color: Colors.green))),
+                                BorderSide(width: 1, color: Colors.green))),
                         child: Text(
                           AppLocalizations.of(context).entrollnow,
                           style: const TextStyle(
-                             color: Colors.green,
+                            color: Colors.green,
                             fontWeight: FontWeight.bold,
                             fontSize: 10,
                           ),

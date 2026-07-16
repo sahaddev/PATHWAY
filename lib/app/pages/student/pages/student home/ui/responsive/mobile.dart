@@ -6,7 +6,7 @@ import 'package:path_way_flu/app/core/constants/constants.dart';
 import 'package:path_way_flu/app/core/constants/subject_list.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/ui/see_all.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/student/pages/student%20home/bloc/student_home_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/build_home_topbox.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/home_card.dart';
@@ -106,11 +106,14 @@ class StudentHomeMob extends StatelessWidget {
                       children: List.generate(
                           subjectList.length,
                           (index) => GestureDetector(
-                            onTap: () => context.read<StudentHomeBloc>().add(StudentHomeEvent.swichingSubjectList(index: index)),
-                            child: Chip(                              
+                                onTap: () => context
+                                    .read<StudentHomeBloc>()
+                                    .add(StudentHomeEvent.swichingSubjectList(
+                                        index: index)),
+                                child: Chip(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      side:  BorderSide(
+                                      side: BorderSide(
                                           color: state.selectedTopic == index
                                               ? Colors.blue[400]!
                                               : Colors.transparent)),
@@ -119,7 +122,7 @@ class StudentHomeMob extends StatelessWidget {
                                   labelStyle:
                                       GoogleFonts.aBeeZee(color: Colors.grey),
                                 ),
-                          )));
+                              )));
                 },
               ),
               const SizedBox(height: 10),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_way_flu/app/core/constants/subject_list.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/data/middleware/teacher.dart';
 import 'package:path_way_flu/app/data/model/lession.dart';
 import 'package:path_way_flu/app/pages/student/pages/subcription%20model/bloc/subcription_bloc.dart';
@@ -15,7 +15,9 @@ class SubcriptionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SubcriptionBloc>().add(const SubcriptionEvent.gettingTotelAmount());
+    context
+        .read<SubcriptionBloc>()
+        .add(const SubcriptionEvent.gettingTotelAmount());
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
@@ -28,7 +30,6 @@ class SubcriptionScreen extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),

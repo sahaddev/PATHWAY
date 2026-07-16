@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 import 'package:path_way_flu/app/core/constants/constants.dart';
 import 'package:path_way_flu/app/core/constants/subject_list.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/ui/see_all.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher_home_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/build_home_topbox.dart';
@@ -171,4 +171,3 @@ class TeachHome extends StatelessWidget {
     );
   }
 }
-

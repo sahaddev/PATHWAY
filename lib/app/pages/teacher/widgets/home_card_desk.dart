@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
 import 'package:path_way_flu/app/data/middleware/student.dart';
 import 'package:path_way_flu/app/data/model/lession.dart';
 import 'package:path_way_flu/app/pages/student/pages/student%20home/bloc/student_home_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher_home_bloc.dart';
-
 
 class BuildHomeBoxDesk extends StatelessWidget {
   final int isSelected;
@@ -38,27 +37,32 @@ class BuildHomeBoxDesk extends StatelessWidget {
                 );
               } else {
                 return ListView.builder(
-                  scrollDirection: Axis.horizontal,
+                    scrollDirection: Axis.horizontal,
                     itemCount: lession.length,
                     itemBuilder: (context, index) {
                       return BlocBuilder<StudentHomeBloc, StudentHomeState>(
                         builder: (context, state) {
                           return GestureDetector(
                             onTap: () {
-                              context.read<StudentHomeBloc>().add(StudentHomeEvent.deatilePage(context: context, lesson: lession[index]));
+                              context.read<StudentHomeBloc>().add(
+                                  StudentHomeEvent.deatilePage(
+                                      context: context,
+                                      lesson: lession[index]));
                             },
                             child: Stack(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 15),
-                                  child: ClipRRect(               
+                                  child: ClipRRect(
                                     borderRadius: BorderRadius.circular(25),
                                     child: Container(
                                       padding: const EdgeInsets.only(
                                           left: 10, right: 10, top: 10),
-                                      color:
-                                          Theme.of(context).colorScheme.secondary,
-                                      width: MediaQuery.of(context).size.width * .3,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                      width: MediaQuery.of(context).size.width *
+                                          .3,
                                       child: Column(
                                         children: [
                                           SizedBox(
@@ -88,7 +92,8 @@ class BuildHomeBoxDesk extends StatelessWidget {
                                                               maxWidth: 150),
                                                       child: Text(
                                                         lession[index].title,
-                                                        style: GoogleFonts.aBeeZee(
+                                                        style:
+                                                            GoogleFonts.aBeeZee(
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           fontSize: 17,
@@ -112,10 +117,13 @@ class BuildHomeBoxDesk extends StatelessWidget {
                                                     ),
                                                     const SizedBox(width: 5),
                                                     Text(
-                                                      lession[index].creatorName,
-                                                      style: GoogleFonts.quicksand(
+                                                      lession[index]
+                                                          .creatorName,
+                                                      style:
+                                                          GoogleFonts.quicksand(
                                                         fontSize: 16,
-                                                        fontWeight: FontWeight.w500,
+                                                        fontWeight:
+                                                            FontWeight.w500,
                                                       ),
                                                     ),
                                                   ],
@@ -128,10 +136,12 @@ class BuildHomeBoxDesk extends StatelessWidget {
                                                   children: [
                                                     Text(
                                                       "${lession[index].watchTime} min",
-                                                      style: GoogleFonts.aBeeZee(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          wordSpacing: 3),
+                                                      style:
+                                                          GoogleFonts.aBeeZee(
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              wordSpacing: 3),
                                                     ),
                                                     Row(
                                                       children: [
@@ -140,17 +150,19 @@ class BuildHomeBoxDesk extends StatelessWidget {
                                                           color: Colors.grey,
                                                           size: 10,
                                                         ),
-                                                        const SizedBox(width: 5),
+                                                        const SizedBox(
+                                                            width: 5),
                                                         Text(
                                                           "${lession[index].lessonId.length} ${AppLocalizations.of(context).lesson}",
-                                                          style:
-                                                              GoogleFonts.aBeeZee(
-                                                                  color:
-                                                                      Colors.grey,
+                                                          style: GoogleFonts
+                                                              .aBeeZee(
+                                                                  color: Colors
+                                                                      .grey,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .bold,
-                                                                  wordSpacing: 3),
+                                                                  wordSpacing:
+                                                                      3),
                                                         )
                                                       ],
                                                     ),
@@ -164,19 +176,20 @@ class BuildHomeBoxDesk extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                 Align(
-                                alignment: Alignment.topRight,
-                                child: BlocBuilder<TeacherHomeBloc, TeacherHomeState>(
-                                  builder: (context, state) {
-                                    return Visibility(
-                                        visible: lession[index]
-                                            .lessonId.isEmpty,
-                                        child: Image.asset(
-                                          "asset/icons/coming-soon.png",
-                                          height: 45,
-                                        ));
-                                  },
-                                ))
+                                Align(
+                                    alignment: Alignment.topRight,
+                                    child: BlocBuilder<TeacherHomeBloc,
+                                        TeacherHomeState>(
+                                      builder: (context, state) {
+                                        return Visibility(
+                                            visible:
+                                                lession[index].lessonId.isEmpty,
+                                            child: Image.asset(
+                                              "asset/icons/coming-soon.png",
+                                              height: 45,
+                                            ));
+                                      },
+                                    ))
                               ],
                             ),
                           );

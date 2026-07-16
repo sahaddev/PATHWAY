@@ -8,7 +8,7 @@ import 'package:path_way_flu/app/pages/commen%20pages/about/ui/about.dart';
 import 'package:path_way_flu/app/pages/student/pages/edit%20profile/ui/edit_profile.dart';
 import 'package:path_way_flu/app/pages/commen%20pages/privecy%20text/ui/privecy.dart';
 import 'package:path_way_flu/app/pages/student/widgets/complaint_alertbox.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/student/widgets/profile_card.dart';
 import 'package:path_way_flu/main.dart';
 import 'package:lottie/lottie.dart';

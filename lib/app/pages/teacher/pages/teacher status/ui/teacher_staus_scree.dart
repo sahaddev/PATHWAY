@@ -4,13 +4,13 @@ import 'package:path_way_flu/app/core/constants/teacher_char_data.dart';
 import 'package:path_way_flu/main.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
+
 class TeacherPrograssScreen extends StatelessWidget {
   const TeacherPrograssScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-  
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -21,8 +21,10 @@ class TeacherPrograssScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 30),
-                 Text("${AppLocalizations.of(context).hey} $userName,", style: kHeadingextStyle),
-                 Text(AppLocalizations.of(context).hereisyourstatus, style: kSubheadingextStyle),
+                Text("${AppLocalizations.of(context).hey} $userName,",
+                    style: kHeadingextStyle),
+                Text(AppLocalizations.of(context).hereisyourstatus,
+                    style: kSubheadingextStyle),
                 const SizedBox(height: 30),
                 Column(
                   children: [

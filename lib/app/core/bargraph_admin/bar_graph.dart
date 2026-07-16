@@ -97,5 +97,5 @@ Widget getBottomTitle(double value, TitleMeta meta) {
     default:
       text = const Text('', style: style);
   }
-  return SideTitleWidget(axisSide: meta.axisSide, child: text);
+  return SideTitleWidget(meta: meta, child: text);
 }

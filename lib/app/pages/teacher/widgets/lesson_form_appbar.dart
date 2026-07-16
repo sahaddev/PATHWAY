@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_way_flu/app/core/constants/snacbar.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/lesson%20Form/bloc/lesson_form_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/main.dart';
 
 AppBar buildLessonFormAppBar(
@@ -42,7 +42,6 @@ AppBar buildLessonFormAppBar(
                 if (formKey.currentState!.validate()) {
                   if (state.pikedImage != null) {
                     context.read<LessonFormBloc>().add(
-                        
                         LessonFormEvent.addingLession(
                             profileImage: userProfile!,
                             price: priceController.text,

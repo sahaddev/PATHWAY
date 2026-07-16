@@ -6,7 +6,7 @@ import 'package:path_way_flu/app/core/constants/constants.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
 import 'package:path_way_flu/app/pages/chat/pages/chat_messaging.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/teacherChat/bloc/teacher_chat_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 
 class TeacherChat extends StatelessWidget {
   const TeacherChat({super.key});

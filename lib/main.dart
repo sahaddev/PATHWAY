@@ -3,7 +3,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:get/get.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'package:path_way_flu/app/core/theme/dark_theme.dart';
@@ -101,9 +101,13 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(create: (context) => TeaEditProfielBloc()),
         BlocProvider(create: (context) => TeacherHomeBloc()),
         BlocProvider(create: (context) => StudentHomeBloc()),
-        BlocProvider(create: (context) => TeacherApplicationBloc(),),
+        BlocProvider(
+          create: (context) => TeacherApplicationBloc(),
+        ),
         BlocProvider(create: (context) => TeacherProfileCollectingBloc()),
-        BlocProvider(create: (context) => ForgotBloc(),)
+        BlocProvider(
+          create: (context) => ForgotBloc(),
+        )
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

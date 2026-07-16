@@ -8,7 +8,7 @@ import 'package:path_way_flu/app/core/constants/snacbar.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/lesson%20Form/bloc/lesson_form_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorial%20form/ui/adding_tutorial_form.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/lesson_form_tutoral_list.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/sub_lesson_dropdown_copy.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/textfield.dart';
 import 'package:path_way_flu/main.dart';
