@@ -18,7 +18,7 @@ class _StudentChatMobState extends State<StudentChatMob> {
   Widget build(BuildContext context) {
     context.read<StudentChatBloc>().add(const StudentChatEvent.givingValue());
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
@@ -30,7 +30,7 @@ class _StudentChatMobState extends State<StudentChatMob> {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onBackground),
+                  color: Theme.of(context).colorScheme.onSurface),
             ),
             SizedBox(
               height: 55,
@@ -105,13 +105,13 @@ class _StudentChatMobState extends State<StudentChatMob> {
                                   height: 40,
                                   child: ElevatedButton(
                                       style: ButtonStyle(
-                                          shape: MaterialStatePropertyAll(
+                                          shape: WidgetStatePropertyAll(
                                               ContinuousRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           65))),
                                           backgroundColor:
-                                              const MaterialStatePropertyAll(
+                                              const WidgetStatePropertyAll(
                                                   Colors.blue)),
                                       onPressed: () {
                                         context.read<StudentChatBloc>().add(

@@ -10,15 +10,15 @@ class StudentAgePiking extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Stack(
           children: [
             Center(
               child: SingleChildScrollView(
                 padding: const EdgeInsets.only(left: 50, right: 50),
-                child:
-                    BlocBuilder<StudentInitDeatilesBloc, StudentInitDeatilesState>(
+                child: BlocBuilder<StudentInitDeatilesBloc,
+                    StudentInitDeatilesState>(
                   builder: (context, state) {
                     return Column(
                       children: [
@@ -69,13 +69,20 @@ class StudentAgePiking extends StatelessWidget {
             Positioned(
               right: 0,
               top: 0,
-              child: TextButton(onPressed: (){
-                context.read<StudentInitDeatilesBloc>().add(StudentInitDeatilesEvent.updatingLevel(context: context));
-              }, child:  Text("Continue",style: TextStyle(
-                color: Theme.of(context).colorScheme.onSurface,
-                decoration: TextDecoration.underline,
-                fontSize: 18,
-              ),)),
+              child: TextButton(
+                  onPressed: () {
+                    context.read<StudentInitDeatilesBloc>().add(
+                        StudentInitDeatilesEvent.updatingLevel(
+                            context: context));
+                  },
+                  child: Text(
+                    "Continue",
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      decoration: TextDecoration.underline,
+                      fontSize: 18,
+                    ),
+                  )),
             ),
           ],
         ),

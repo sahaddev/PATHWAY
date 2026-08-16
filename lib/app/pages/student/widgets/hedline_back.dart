@@ -38,7 +38,7 @@ class BuildHeadlinewithBack extends StatelessWidget {
               boxShadow: const [
                 BoxShadow(blurRadius: .5),
               ],
-              color: Theme.of(context).colorScheme.background,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(8),
             ),
             child: IconButton(

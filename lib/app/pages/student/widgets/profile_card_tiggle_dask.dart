@@ -12,10 +12,12 @@ class BuildProfileWithToggleDesk extends StatefulWidget {
   });
 
   @override
-  State<BuildProfileWithToggleDesk> createState() => _BuildProfileWithToggleDeskState();
+  State<BuildProfileWithToggleDesk> createState() =>
+      _BuildProfileWithToggleDeskState();
 }
 
-class _BuildProfileWithToggleDeskState extends State<BuildProfileWithToggleDesk> {
+class _BuildProfileWithToggleDeskState
+    extends State<BuildProfileWithToggleDesk> {
   bool isSwitched = false;
 
   @override
@@ -29,15 +31,14 @@ class _BuildProfileWithToggleDeskState extends State<BuildProfileWithToggleDesk>
             width: 120,
             child: Text(
               widget.text,
-              style:
-                  kTitleTextStyle.copyWith(fontSize: 18,color: Colors.grey),
+              style: kTitleTextStyle.copyWith(fontSize: 18, color: Colors.grey),
             ),
           ),
           SizedBox(
             height: 20,
             width: 70,
             child: Switch(
-                thumbColor: MaterialStatePropertyAll(
+                thumbColor: WidgetStatePropertyAll(
                     Theme.of(context).colorScheme.onSecondary),
                 value: isSwitched,
                 onChanged: (value) {

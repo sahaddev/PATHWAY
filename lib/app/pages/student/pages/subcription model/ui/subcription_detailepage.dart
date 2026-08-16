@@ -137,7 +137,7 @@ class SubcriptionDeatilePage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      backgroundColor: MaterialStatePropertyAll(
+                      backgroundColor: WidgetStatePropertyAll(
                           Theme.of(context).colorScheme.primary)),
                   onPressed: () {
                     Navigator.of(context).pop();

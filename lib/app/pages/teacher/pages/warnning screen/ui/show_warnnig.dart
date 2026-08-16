@@ -8,28 +8,44 @@ class ShowWaring extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      body:  Padding(
-        padding: const EdgeInsets.only(left: 30,right: 30),
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surface,
+      body: Padding(
+        padding: const EdgeInsets.only(left: 30, right: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('asset/icons/images-removebg-preview.png',height: 250,fit: BoxFit.cover,filterQuality: FilterQuality.high,),
+            Image.asset(
+              'asset/icons/images-removebg-preview.png',
+              height: 250,
+              fit: BoxFit.cover,
+              filterQuality: FilterQuality.high,
+            ),
             const SizedBox(height: 70),
-            Text("Warning",style: kHeadingextStyle.copyWith(color: Colors.lightBlue),),
+            Text(
+              "Warning",
+              style: kHeadingextStyle.copyWith(color: Colors.lightBlue),
+            ),
             const SizedBox(height: 20),
-             Text("Before creating your own tutorials, you need to get permission from the head. Just submit a request and wait a maximum of 3 days to receive a response.",textAlign: TextAlign.center,style: GoogleFonts.roboto(color: Theme.of(context).colorScheme.onSecondary)),
-             TextButton(onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>const ApplicationForm()));
-             }, child: const Text('Fill your form',style: TextStyle(
-              color: Colors.blue, 
-               decoration: TextDecoration.underline,
-
-             ),))
+            Text(
+                "Before creating your own tutorials, you need to get permission from the head. Just submit a request and wait a maximum of 3 days to receive a response.",
+                textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    color: Theme.of(context).colorScheme.onSecondary)),
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (ctx) => const ApplicationForm()));
+                },
+                child: const Text(
+                  'Fill your form',
+                  style: TextStyle(
+                    color: Colors.blue,
+                    decoration: TextDecoration.underline,
+                  ),
+                ))
           ],
-        
         ),
       ),
     );

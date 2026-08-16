@@ -38,7 +38,7 @@ class _VideoPlayTabState extends State<VideoPlayTab> {
   Widget build(BuildContext context) {
     //
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(),
@@ -49,7 +49,9 @@ class _VideoPlayTabState extends State<VideoPlayTab> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(onTap: () => Navigator.of(context).pop(),child: SvgPicture.asset("asset/icons/arrow-left.svg")),
+                  GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: SvgPicture.asset("asset/icons/arrow-left.svg")),
                   const SizedBox(height: 20),
                   isLoading
                       ? Container(
@@ -120,13 +122,12 @@ class _VideoPlayTabState extends State<VideoPlayTab> {
                       ],
                     ),
                     CircularPercentIndicator(
-                          radius: 25,
-                          center: const Text("25%"),
-                          percent: 25 / 100,
-                          progressColor: const Color.fromARGB(255, 0, 255, 8),
-                          backgroundWidth: 5,
-                        ),
-                    
+                      radius: 25,
+                      center: const Text("25%"),
+                      percent: 25 / 100,
+                      progressColor: const Color.fromARGB(255, 0, 255, 8),
+                      backgroundWidth: 5,
+                    ),
                   ]),
             ),
             Expanded(
@@ -184,8 +185,7 @@ class _VideoPlayTabState extends State<VideoPlayTab> {
                                             },
                                             number: index,
                                             title: tutoral[index].title,
-                                            creatorName:
-                                                tutoral[index].level);
+                                            creatorName: tutoral[index].level);
                                       }),
                                 );
                               }
@@ -221,4 +221,3 @@ class _VideoPlayTabState extends State<VideoPlayTab> {
     });
   }
 }
-

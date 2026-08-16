@@ -18,7 +18,7 @@ import 'package:path_way_flu/app/pages/student/pages/deatiles%20page/ui/video_pl
 class StudentApi {
   static const baseUrl = AuthApi.baseUrl;
 
-  static addComplaint(Map data) async {
+  static Future<void> addComplaint(Map data) async {
     final url = Uri.parse("${baseUrl}add_complaint");
 
     try {
@@ -36,7 +36,7 @@ class StudentApi {
     }
   }
 
-  static addProgress(Map data) async {
+  static Future<void> addProgress(Map data) async {
     final url = Uri.parse("${baseUrl}add_progress");
 
     try {
@@ -56,7 +56,7 @@ class StudentApi {
     }
   }
 
-  static getTotorialStudent(String catogory) async {
+  static Future<List<Tutorial>> getTotorialStudent(String catogory) async {
     List<Tutorial> tutorial = [];
     var url = Uri.parse("${baseUrl}get_tutorial");
 
@@ -86,10 +86,11 @@ class StudentApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return tutorial;
     }
   }
 
-  static studentSubcriptionAdding(
+  static Future<void> studentSubcriptionAdding(
       {required id,
       required Map data,
       required BuildContext context,
@@ -164,7 +165,7 @@ class StudentApi {
     }
   }
 
-  static getAllLession(String subject) async {
+  static Future<List<Lesson>> getAllLession(String subject) async {
     List<Lesson> listLesson = [];
     final url = Uri.parse('${baseUrl}get_lession');
 
@@ -183,6 +184,8 @@ class StudentApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+
+      return listLesson;
     }
   }
 
@@ -201,7 +204,7 @@ class StudentApi {
     return response;
   }
 
-  static getAllProgerss(String studentId) async {
+  static Future<List<Progress>> getAllProgerss(String studentId) async {
     List<Progress> listLesson = [];
     final url = Uri.parse('${baseUrl}get_progress');
 
@@ -220,10 +223,11 @@ class StudentApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return listLesson;
     }
   }
 
-  static getOneProgerssForUpdate(
+  static Future<void> getOneProgerssForUpdate(
       {required String studentId,
       required String lessonId,
       required BuildContext context,
@@ -285,7 +289,7 @@ class StudentApi {
     }
   }
 
-  static addLessonToStudent(Map data) async {
+  static Future<void> addLessonToStudent(Map data) async {
     final url = Uri.parse("${baseUrl}add_progress");
 
     try {
@@ -303,8 +307,18 @@ class StudentApi {
     }
   }
 
-  static getOneStudent(studentId) async {
-    Student? student;
+  static Future<Student> getOneStudent(studentId) async {
+    Student student = Student(
+        name: "name",
+        age: "0",
+        email: "email",
+        password: "password",
+        orderValue: 0,
+        mobNumber: "0",
+        lessonId: [],
+        active: true,
+        level: "0",
+        profileImage: "profileImage");
     final url = Uri.parse('${baseUrl}get_studentById/$studentId');
 
     try {
@@ -315,13 +329,15 @@ class StudentApi {
         return student;
       } else {
         debugPrint('faild to get student lession');
+        return student;
       }
     } catch (e) {
       debugPrint(e.toString());
+      return student;
     }
   }
 
-  static getOneStudentForDeatilePage(
+  static Future<void> getOneStudentForDeatilePage(
       {required studentId,
       required lessionId,
       required lesson,
@@ -351,7 +367,7 @@ class StudentApi {
     }
   }
 
-  static getOneprogress(id, Map updateData) async {
+  static Future<void> getOneprogress(id, Map updateData) async {
     // Progress? progress;
     final url = Uri.parse('${baseUrl}get_progressById/$id');
     try {
@@ -379,7 +395,7 @@ class StudentApi {
     }
   }
 
-  static updateProgress(id, Map data, context) async {
+  static Future<void> updateProgress(id, Map data, context) async {
     var url = Uri.parse("${baseUrl}update_progress/$id");
 
     try {
@@ -396,7 +412,7 @@ class StudentApi {
     }
   }
 
-  static updateStudent(id, Map data, context, filepath) async {
+  static Future<void> updateStudent(id, Map data, context, filepath) async {
     var url = Uri.parse("${baseUrl}update_student/$id");
 
     try {
@@ -423,7 +439,7 @@ class StudentApi {
     }
   }
 
-  static updateStudentForlevel(id, Map data, context) async {
+  static Future<void> updateStudentForlevel(id, Map data, context) async {
     var url = Uri.parse("${baseUrl}update_student/$id");
 
     try {

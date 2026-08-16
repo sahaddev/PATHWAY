@@ -21,7 +21,7 @@ class SignMobLayOut extends StatelessWidget {
     var passwordController = TextEditingController();
     GlobalKey<FormState> formkey = GlobalKey();
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -100,7 +100,6 @@ class SignMobLayOut extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 50),
-          
                 BlocBuilder<SignInBloc, SignInState>(
                   builder: (context, state) {
                     return BuildLoaderButton(

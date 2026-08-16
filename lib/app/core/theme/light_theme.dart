@@ -12,16 +12,13 @@ ThemeData lightTheme = ThemeData(
       color: Colors.grey[800],
     ),
     colorScheme: ColorScheme.light(
-      background: Colors.white,
+      surface: Colors.white,
       primary: Colors.grey[200]!,
       secondary: Colors.grey[100]!,
       onSecondary: Colors.grey[500]!,
-      // chat----
-      onBackground: const Color.fromARGB(255, 0, 140, 255),
       onPrimary: Colors.white,
       // chat------
       onSurface: Colors.black,
       //subcription page---
       onPrimaryContainer: Colors.grey[200],
-      
     ));

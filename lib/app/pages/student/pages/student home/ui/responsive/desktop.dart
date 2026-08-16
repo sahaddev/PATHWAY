@@ -12,7 +12,6 @@ class StudentHomeDesk extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(children: [
@@ -99,12 +98,12 @@ class StudentHomeDesk extends StatelessWidget {
                         builder: (context, state) {
                           return ElevatedButton(
                               style: ButtonStyle(
-                                  side: MaterialStatePropertyAll(BorderSide(
+                                  side: WidgetStatePropertyAll(BorderSide(
                                       color: state.selectedTopic == index
                                           ? Colors.blue[400]!
                                           : Colors.transparent,
                                       width: 2)),
-                                  backgroundColor: MaterialStatePropertyAll(
+                                  backgroundColor: WidgetStatePropertyAll(
                                     Theme.of(context).colorScheme.primary,
                                   )),
                               onPressed: () {
@@ -123,7 +122,7 @@ class StudentHomeDesk extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(right: 10,left: 20),
+            padding: EdgeInsets.only(right: 10, left: 20),
             child: SizedBox(
               height: 600,
               width: double.infinity,
@@ -135,8 +134,6 @@ class StudentHomeDesk extends StatelessWidget {
     );
   }
 }
-
-
 
 class HomeMainBox extends StatelessWidget {
   const HomeMainBox({
@@ -159,13 +156,19 @@ class HomeMainBox extends StatelessWidget {
                     return Text(state.currentSubject, style: kTitleTextStyle);
                   },
                 ),
-                TextButton(onPressed: (){
-                  context.read<StudentHomeBloc>().add(StudentHomeEvent.navigatingSeeAll(context: context));
-                }, child:  Text('SeeAll',style: GoogleFonts.aBeeZee(
-                  color: Colors.blue,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
-                ),))
+                TextButton(
+                    onPressed: () {
+                      context.read<StudentHomeBloc>().add(
+                          StudentHomeEvent.navigatingSeeAll(context: context));
+                    },
+                    child: Text(
+                      'SeeAll',
+                      style: GoogleFonts.aBeeZee(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
+                      ),
+                    ))
               ],
             ),
             const SizedBox(height: 20),

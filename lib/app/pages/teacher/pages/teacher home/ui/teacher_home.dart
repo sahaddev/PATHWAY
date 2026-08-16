@@ -67,7 +67,7 @@ class TeachHome extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 10),
         child: SingleChildScrollView(

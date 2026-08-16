@@ -126,11 +126,11 @@ class ComplantStudent extends StatelessWidget {
                 height: 60,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(BeveledRectangleBorder(
+                      shape: WidgetStatePropertyAll(BeveledRectangleBorder(
                           side: BorderSide(color: Colors.grey.shade400),
                           borderRadius: BorderRadius.circular(3))),
                       backgroundColor:
-                          const MaterialStatePropertyAll(Colors.white)),
+                          const WidgetStatePropertyAll(Colors.white)),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
@@ -149,17 +149,17 @@ class ComplantStudent extends StatelessWidget {
                 height: 60,
                 child: ElevatedButton(
                   style: ButtonStyle(
-                      shape: MaterialStatePropertyAll(BeveledRectangleBorder(
+                      shape: WidgetStatePropertyAll(BeveledRectangleBorder(
                           borderRadius: BorderRadius.circular(3))),
                       backgroundColor:
-                          MaterialStatePropertyAll(Colors.blue.shade300)),
+                          WidgetStatePropertyAll(Colors.blue.shade300)),
                   onPressed: () {
                     if (formkey.currentState!.validate()) {
                       DateTime date = DateTime.now();
                       int day = date.day;
                       int month = date.month;
                       int year = date.year;
-                      Map<String,dynamic> data = {
+                      Map<String, dynamic> data = {
                         "title": titleEditControlle.text,
                         "description": discriptionEditControlle.text,
                         "dataTime": '$day/$month/$year',

@@ -15,7 +15,7 @@ import 'package:path_way_flu/app/pages/teacher/widgets/teacher_bottom_navi.dart'
 class TeacherApi {
   static const baseUrl = AuthApi.baseUrl;
 
-  static applyingForSubject(id, data, BuildContext context) async {
+  static Future<void> applyingForSubject(id, data, BuildContext context) async {
     final url = Uri.parse("${baseUrl}update_teacher/$id");
 
     try {
@@ -65,7 +65,6 @@ class TeacherApi {
         if (image_response.statusCode == 200) {
           //-------------------updating subject model--------------------------
           //  await patchImageLessonProfile(data["_id"], profileFilepath);
-
 
           try {
             final url = Uri.parse("${baseUrl}get_subjectById/$subject");
@@ -128,7 +127,7 @@ class TeacherApi {
     }
   }
 
-  static getAllLession() async {
+  static Future<List<Lesson>> getAllLession() async {
     List<Lesson> listLesson = [];
     final url = Uri.parse('${baseUrl}get_lession');
 
@@ -145,10 +144,12 @@ class TeacherApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return listLesson;
     }
   }
 
-  static getByTeacherLession({required String teacherId}) async {
+  static Future<List<Lesson>> getByTeacherLession(
+      {required String teacherId}) async {
     List<Lesson> listLesson = [];
     final url = Uri.parse('${baseUrl}get_lession');
     try {
@@ -162,10 +163,12 @@ class TeacherApi {
         }
         return listLesson;
       } else {
+        debugPrint('faild to get student lession');
         return listLesson;
       }
     } catch (e) {
       debugPrint(e.toString());
+      return listLesson;
     }
   }
 
@@ -185,8 +188,11 @@ class TeacherApi {
   //   }
   // }
 
-  static updateLesson(
-      {required BuildContext context, required Map data, required id,filepath}) async {
+  static Future<void> updateLesson(
+      {required BuildContext context,
+      required Map data,
+      required id,
+      filepath}) async {
     var url = Uri.parse("${baseUrl}update_lession/$id");
 
     try {
@@ -196,9 +202,9 @@ class TeacherApi {
 
       if (res.statusCode == 200) {
         debugPrint("lesson is updated");
-         if (filepath != null) {
-           patchImage(id, filepath);
-         }
+        if (filepath != null) {
+          patchImage(id, filepath);
+        }
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (ctx) => const TeacherBotmNavi(),
         ));
@@ -215,7 +221,7 @@ class TeacherApi {
     }
   }
 
-  static deleteLesson(id, BuildContext context) async {
+  static Future<void> deleteLesson(id, BuildContext context) async {
     var url = Uri.parse("${baseUrl}delete_lession/$id");
 
     try {
@@ -242,7 +248,7 @@ class TeacherApi {
   }
 
 // Tutorial list
-  static addTotorial(
+  static Future<void> addTotorial(
     Map data,
     BuildContext context,
     String lessionId,
@@ -300,7 +306,7 @@ class TeacherApi {
     }
   }
 
-  static getTotorial(id) async {
+  static Future<List<Tutorial>> getTotorial(id) async {
     List<Tutorial> tutorial = [];
     List list = [];
     var url = Uri.parse("${baseUrl}get_tutorial");
@@ -325,6 +331,7 @@ class TeacherApi {
           }
         } catch (e) {
           debugPrint(e.toString());
+          return tutorial;
         }
 //--------------------------
         for (var value in data) {
@@ -334,20 +341,23 @@ class TeacherApi {
               tutorial.add(Tutorial.fromJson(value));
             } else {
               debugPrint("id is null or not present");
+              return tutorial;
             }
           }
         }
 
         return tutorial;
       } else {
+        debugPrint("faield to fetch  tutorial");
         return tutorial;
       }
     } catch (e) {
       debugPrint(e.toString());
+      return tutorial;
     }
   }
 
-  static updateTotorial(id, Map data, context) async {
+  static Future<void> updateTotorial(id, Map data, context) async {
     var url = Uri.parse("${baseUrl}update_tutorial/$id");
 
     try {
@@ -371,7 +381,7 @@ class TeacherApi {
     }
   }
 
-  static deleteTotorial(id, context) async {
+  static Future<void> deleteTotorial(id, context) async {
     var url = Uri.parse("${baseUrl}delete_tutorial/$id");
 
     try {
@@ -427,8 +437,15 @@ class TeacherApi {
     return response;
   }
 
-  static getOneTacher(teacherId) async {
-    Teacher? teacher;
+  static Future<Teacher> getOneTacher(teacherId) async {
+    Teacher teacher = Teacher(
+        name: "name",
+        email: "email",
+        password: "password",
+        mobNumber: "0",
+        active: true,
+        profileImage: "0",
+        id: '');
     final url = Uri.parse('${baseUrl}get_teacherById/$teacherId');
 
     try {
@@ -443,10 +460,10 @@ class TeacherApi {
     } catch (e) {
       debugPrint(e.toString());
     }
+    return teacher;
   }
 
- 
-   static Future<http.StreamedResponse> patchProfileImageTeacher(
+  static Future<http.StreamedResponse> patchProfileImageTeacher(
       String id, String filepath) async {
     var request = http.MultipartRequest(
         'PATCH', Uri.parse("${baseUrl}add/teacher_image/$id"));
@@ -461,7 +478,7 @@ class TeacherApi {
     return response;
   }
 
-  static updateTeacher(id, Map data, context,filepath) async {
+  static Future<void> updateTeacher(id, Map data, context, filepath) async {
     var url = Uri.parse("${baseUrl}update_teacher/$id");
 
     try {
@@ -471,7 +488,7 @@ class TeacherApi {
 
       if (res.statusCode == 200) {
         if (filepath != null) {
-          patchProfileImageTeacher(id,filepath);
+          patchProfileImageTeacher(id, filepath);
         }
         debugPrint("student is updated");
         Navigator.of(context).pop();
@@ -512,8 +529,6 @@ class TeacherApi {
   //   }
   // }
 
- 
- 
   static Future<http.StreamedResponse> patchProfileImage(
       String id, String filepath) async {
     var request = http.MultipartRequest(
@@ -528,9 +543,9 @@ class TeacherApi {
 
     return response;
   }
-  
-  static getAllLessionForTotel()async{
-        List<Lesson> listLesson = [];
+
+  static Future<List<Lesson>> getAllLessionForTotel() async {
+    List<Lesson> listLesson = [];
     final url = Uri.parse('${baseUrl}get_lession');
 
     try {
@@ -546,7 +561,7 @@ class TeacherApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return listLesson;
     }
- 
   }
 }

@@ -21,9 +21,9 @@ class ListOfLession extends StatelessWidget {
         },
         backgroundColor: Theme.of(context).colorScheme.onSecondary,
         child: Icon(Icons.add,
-            color: Theme.of(context).colorScheme.background, size: 30),
+            color: Theme.of(context).colorScheme.surface, size: 30),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         centerTitle: true,
         title: Text(
@@ -124,7 +124,7 @@ class ListOfLession extends StatelessWidget {
                                           },
                                           style: ButtonStyle(
                                               backgroundColor:
-                                                  MaterialStatePropertyAll(
+                                                  WidgetStatePropertyAll(
                                                       Theme.of(context)
                                                           .colorScheme
                                                           .onSurface)),

@@ -9,7 +9,6 @@ import 'package:path_way_flu/app/pages/student/pages/subcription%20model/bloc/su
 import 'package:path_way_flu/app/pages/student/widgets/buy_botton.dart';
 import 'package:path_way_flu/app/pages/student/widgets/course_con_without_payment.dart';
 
-
 class StudentDeatileWithoutPayMob extends StatelessWidget {
   final Lesson lesson;
 
@@ -17,12 +16,14 @@ class StudentDeatileWithoutPayMob extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<SubcriptionBloc>().add(const SubcriptionEvent.makeinginstence());
+    context
+        .read<SubcriptionBloc>()
+        .add(const SubcriptionEvent.makeinginstence());
     return Scaffold(
       body: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
+          color: Theme.of(context).colorScheme.surface,
           image: const DecorationImage(
               image: AssetImage("asset/images/ux_big-removebg-preview.png"),
               alignment: Alignment.topRight),
@@ -34,7 +35,9 @@ class StudentDeatileWithoutPayMob extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(onTap: () => Navigator.of(context).pop(),child: SvgPicture.asset("asset/icons/arrow-left.svg")),
+                  GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: SvgPicture.asset("asset/icons/arrow-left.svg")),
                   const SizedBox(height: 30),
                   ClipPath(
                     clipper: BestSellerClipper(),
@@ -51,7 +54,7 @@ class StudentDeatileWithoutPayMob extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                   Text(lesson.title, style: kHeadingextStyle),
+                  Text(lesson.title, style: kHeadingextStyle),
                   const SizedBox(height: 16),
                   Row(
                     children: [
@@ -114,12 +117,13 @@ class StudentDeatileWithoutPayMob extends StatelessWidget {
                                     child: Text("Tutorial is empty"));
                               } else {
                                 return SizedBox(
-                                  height: MediaQuery.of(context).size.height *.4,
+                                  height:
+                                      MediaQuery.of(context).size.height * .4,
                                   child: ListView.builder(
                                     itemCount: tutoral.length,
                                     itemBuilder: (context, index) =>
                                         CourseContent(
-                                            number: index+1,
+                                            number: index + 1,
                                             title: tutoral[index].title,
                                             creator: tutoral[index].level),
                                   ),
@@ -139,4 +143,3 @@ class StudentDeatileWithoutPayMob extends StatelessWidget {
     );
   }
 }
-

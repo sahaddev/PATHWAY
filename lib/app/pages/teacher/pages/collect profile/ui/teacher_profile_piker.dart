@@ -70,8 +70,7 @@ class TeacherProfleImage extends StatelessWidget {
                                         .pikingImge());
                               },
                               icon: Icon(Icons.edit,
-                                  color:
-                                      Theme.of(context).colorScheme.background),
+                                  color: Theme.of(context).colorScheme.surface),
                             ),
                           ),
                         ),
@@ -83,7 +82,8 @@ class TeacherProfleImage extends StatelessWidget {
               const SizedBox(height: 150),
               Align(
                   alignment: Alignment.center,
-                  child: BlocBuilder<TeacherProfileCollectingBloc, TeacherProfileCollectingState>(
+                  child: BlocBuilder<TeacherProfileCollectingBloc,
+                      TeacherProfileCollectingState>(
                     builder: (context, state) {
                       return BuildLoaderButton(
                         function: () {

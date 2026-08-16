@@ -17,7 +17,7 @@ class TeacherChat extends StatelessWidget {
         .read<TeacherChatBloc>()
         .add(const TeacherChatEvent.givingValueInitialy());
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),
@@ -29,7 +29,7 @@ class TeacherChat extends StatelessWidget {
               style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onBackground),
+                  color: Theme.of(context).colorScheme.onSurface),
             ),
             SizedBox(
               height: 55,
@@ -101,15 +101,16 @@ class TeacherChat extends StatelessWidget {
                                   height: 40,
                                   child: ElevatedButton(
                                       style: ButtonStyle(
-                                          shape: MaterialStatePropertyAll(
+                                          shape: WidgetStatePropertyAll(
                                               ContinuousRectangleBorder(
-                                                  borderRadius: BorderRadius
-                                                      .circular(65))),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          65))),
                                           backgroundColor:
-                                              MaterialStatePropertyAll(
+                                              WidgetStatePropertyAll(
                                                   Theme.of(context)
                                                       .colorScheme
-                                                      .onBackground)),
+                                                      .onSurface)),
                                       onPressed: () {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(

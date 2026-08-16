@@ -12,7 +12,7 @@ class SeeAllDesk extends StatelessWidget {
   Widget build(BuildContext context) {
     context.read<SeeAllBloc>().add(const SeeAllEvent.givingInitialValue());
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         toolbarHeight: 70,
         title: TextFormField(

@@ -11,9 +11,9 @@ import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:socket_io_client/socket_io_client.dart';
 
 class MassagingScreen extends StatefulWidget {
-    final String image;
-    final String name;
-  
+  final String image;
+  final String name;
+
   const MassagingScreen({super.key, required this.image, required this.name});
 
   @override
@@ -25,7 +25,7 @@ class _MassagingScreenState extends State<MassagingScreen> {
   late IO.Socket socket;
   ChatController chatController = ChatController();
   @override
-  void initState() { 
+  void initState() {
     socket = IO.io(
         // 'http://16.171.61.229:5000',
         AuthApi.baseUrl,
@@ -45,7 +45,7 @@ class _MassagingScreenState extends State<MassagingScreen> {
         title: Row(
           children: [
             const SizedBox(width: 5),
-             CircleAvatar(
+            CircleAvatar(
               radius: 28,
               backgroundImage: NetworkImage(widget.image),
             ),
@@ -73,16 +73,21 @@ class _MassagingScreenState extends State<MassagingScreen> {
               ],
             ),
             const Spacer(),
-             SizedBox(
+            SizedBox(
                 height: 35,
                 width: 35,
-                child: IconButton(icon: const Icon(Icons.videocam_outlined, size: 30),onPressed: (){
-                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => CallPage(callID: userId!),));
-                },))
+                child: IconButton(
+                  icon: const Icon(Icons.videocam_outlined, size: 30),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => CallPage(callID: userId!),
+                    ));
+                  },
+                ))
           ],
         ),
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Stack(
           children: [
@@ -119,9 +124,9 @@ class _MassagingScreenState extends State<MassagingScreen> {
                   children: [
                     const SizedBox(width: 15),
                     ConstrainedBox(
-                      constraints:  BoxConstraints(
-                        maxWidth: MediaQuery.of(context).size.width * .7,
-                      ),
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * .7,
+                        ),
                         child: TextFormField(
                           controller: msgInputController,
                           decoration: const InputDecoration(
@@ -131,10 +136,10 @@ class _MassagingScreenState extends State<MassagingScreen> {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                      if (msgInputController.text != '') {
-                         sendMessege(msgInputController.text);
-                        msgInputController.text = '';
-                      }
+                        if (msgInputController.text != '') {
+                          sendMessege(msgInputController.text);
+                          msgInputController.text = '';
+                        }
                       },
                       icon: const Icon(Icons.send),
                       color: Theme.of(context).iconTheme.color,
@@ -185,7 +190,10 @@ class MessengerItem extends StatelessWidget {
   final bool sentByme;
   final String datetime;
   const MessengerItem(
-      {super.key, required this.sentByme, required this.message, required this.datetime});
+      {super.key,
+      required this.sentByme,
+      required this.message,
+      required this.datetime});
 
   @override
   Widget build(BuildContext context) {
@@ -220,18 +228,17 @@ class MessengerItem extends StatelessWidget {
                         fontSize: 15,
                       ),
                     ),
-                    
                   ],
                 ),
               ),
             ),
-             Text(
-                  "$datetime PM",
-                  style: const TextStyle(
-                    color: Colors.grey,
-                    fontSize: 10,
-                  ),
-                ),
+            Text(
+              "$datetime PM",
+              style: const TextStyle(
+                color: Colors.grey,
+                fontSize: 10,
+              ),
+            ),
           ],
         ),
       ),

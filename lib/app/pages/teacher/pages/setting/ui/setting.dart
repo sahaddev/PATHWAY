@@ -20,7 +20,7 @@ class TeacherSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBarSetting(context),
-      backgroundColor: Theme.of(context).colorScheme.onBackground,
+      backgroundColor: Theme.of(context).colorScheme.onSurface,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

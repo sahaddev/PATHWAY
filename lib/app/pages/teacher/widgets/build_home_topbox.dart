@@ -74,9 +74,9 @@ class BuildHomeTopBox extends StatelessWidget {
                     child: ElevatedButton(
                         onPressed: () {},
                         style: ButtonStyle(
-                            backgroundColor: MaterialStatePropertyAll(
+                            backgroundColor: WidgetStatePropertyAll(
                                 Theme.of(context).colorScheme.secondary),
-                            side: const MaterialStatePropertyAll(
+                            side: const WidgetStatePropertyAll(
                                 BorderSide(width: 1, color: Colors.green))),
                         child: Text(
                           AppLocalizations.of(context).entrollnow,

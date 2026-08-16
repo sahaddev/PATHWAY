@@ -19,7 +19,7 @@ class SignTebLayOut extends StatelessWidget {
     var passwordController = TextEditingController();
     GlobalKey<FormState> formkey = GlobalKey();
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Padding(
         padding: const EdgeInsets.all(30.0),
         child: Container(

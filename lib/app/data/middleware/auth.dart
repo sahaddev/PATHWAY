@@ -8,15 +8,12 @@ import 'package:http/http.dart' as http;
 import 'package:path_way_flu/app/core/constants/snacbar.dart';
 import 'package:path_way_flu/app/pages/auth/domain/usecases/define_fun.dart';
 
-
 class AuthApi {
   static const baseUrl = "https://learnpro.today/api/";
   // static const baseUrlImage = "https://cors-anywhere.herokuapp.com/http://learnpro.today:5000/";
   static const baseUrlImage = "https://learnpro.today/";
 
-
-
-  static addStudent(Map sdata, BuildContext context) async {
+  static Future<void> addStudent(Map sdata, BuildContext context) async {
     final url = Uri.parse("${baseUrl}add_student");
     try {
       final res = await http.post(url, body: sdata);
@@ -49,7 +46,7 @@ class AuthApi {
     }
   }
 
-  static addTeacher(Map tdata, BuildContext context) async {
+  static Future<void> addTeacher(Map tdata, BuildContext context) async {
     final url = Uri.parse("${baseUrl}add_teacher");
 
     try {
@@ -83,7 +80,7 @@ class AuthApi {
     }
   }
 
-  static loginStudent(Map sdata, BuildContext context) async {
+  static Future<void> loginStudent(Map sdata, BuildContext context) async {
     final url = Uri.parse("${baseUrl}log_student");
 
     try {
@@ -98,7 +95,8 @@ class AuthApi {
         String id = data['_id'];
         String name = data['name'];
         String profile = data['profileImage'];
-        AuthFuntion().studentLogin(context: context, id: id, name: name,profile:profile );
+        AuthFuntion().studentLogin(
+            context: context, id: id, name: name, profile: profile);
       } else if (res.statusCode == 404) {
         buildShowSnacbar(
             context: context,
@@ -126,7 +124,7 @@ class AuthApi {
     }
   }
 
-  static loginTeacher(Map tdata, BuildContext context) async {
+  static Future<void> loginTeacher(Map tdata, BuildContext context) async {
     final url = Uri.parse("${baseUrl}log_teacher");
 
     try {
@@ -141,7 +139,8 @@ class AuthApi {
         String id = data['_id'];
         String name = data['name'];
         String profile = data['profileImage'];
-        AuthFuntion().teacherLogin(context: context, id: id, name: name,profile:profile );
+        AuthFuntion().teacherLogin(
+            context: context, id: id, name: name, profile: profile);
       } else if (res.statusCode == 404) {
         debugPrint("wrong password");
         //--------

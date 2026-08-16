@@ -16,7 +16,7 @@ class StudentChat extends StatefulWidget {
 class _StudentChatState extends State<StudentChat> {
   List<Teacher> teacher = [];
 
-  getTeacher() async {
+  Future<void> getTeacher() async {
     teacher = await AdminApi.getTeacher();
   }
 
@@ -28,8 +28,8 @@ class _StudentChatState extends State<StudentChat> {
           mobileScaffold: StudentChatMob(),
           tabletScaffold: StudentChatMob(),
           desktopScaffold: StudentChatDesk(
-            // teacher: teacher.first,
-          )),
+              // teacher: teacher.first,
+              )),
     );
   }
 }

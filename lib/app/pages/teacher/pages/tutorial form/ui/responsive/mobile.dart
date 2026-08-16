@@ -22,7 +22,7 @@ class AddTotorialMob extends StatelessWidget {
     GlobalKey<FormState> formKey = GlobalKey();
 
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(left: 20, right: 20),

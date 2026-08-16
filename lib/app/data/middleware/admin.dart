@@ -18,7 +18,7 @@ class AdminApi {
 
   // api for Complaits
 
-  static getComplaits() async {
+  static Future<List<Complaint>> getComplaits() async {
     List<Complaint> complaints = [];
     var url = Uri.parse("${baseUrl}get_complaint");
 
@@ -37,10 +37,11 @@ class AdminApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return complaints;
     }
   }
 
-  static deleteComplates(id, context) async {
+  static Future<void> deleteComplates(id, context) async {
     var url = Uri.parse("${baseUrl}delete_complaint/$id");
 
     try {
@@ -64,7 +65,7 @@ class AdminApi {
 
   // getting teacher application
 
-  static getTeacherApplication() async {
+  static Future<List<Teacher>> getTeacherApplication() async {
     List<Teacher> teacher = [];
     final url = Uri.parse("${baseUrl}get_teacher");
 
@@ -85,10 +86,12 @@ class AdminApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return teacher;
     }
   }
 
-  static subjectApproving(id, Map data, BuildContext context) async {
+  static Future<void> subjectApproving(
+      id, Map data, BuildContext context) async {
     final url = Uri.parse("${baseUrl}update_teacher/$id");
 
     try {
@@ -96,8 +99,8 @@ class AdminApi {
 
       if (res.statusCode == 200) {
         debugPrint("Approved as a teacher");
-       
-         buildShowSnacbar(
+
+        buildShowSnacbar(
             context: context,
             content: "Approved as a teacher",
             title: 'Hi There!',
@@ -116,7 +119,8 @@ class AdminApi {
     }
   }
 
-  static subjectApprovingCanselling(id, Map data, BuildContext context) async {
+  static Future<void> subjectApprovingCanselling(
+      id, Map data, BuildContext context) async {
     final url = Uri.parse("${baseUrl}update_teacher/$id");
 
     try {
@@ -146,7 +150,7 @@ class AdminApi {
 
   // getting student list
 
-  static getStudents() async {
+  static Future<List<Student>> getStudents() async {
     List<Student> studentList = [];
     final url = Uri.parse('${baseUrl}get_student');
 
@@ -161,15 +165,16 @@ class AdminApi {
         }
         return studentList;
       } else {
-        return debugPrint('faield to get data');
+        return studentList;
       }
     } catch (e) {
       debugPrint(e.toString());
+      return studentList;
     }
   }
   // getting teacher list
 
-  static getTeacher() async {
+  static Future<List<Teacher>> getTeacher() async {
     List<Teacher> teacher = [];
     final url = Uri.parse("${baseUrl}get_teacher");
 
@@ -186,6 +191,7 @@ class AdminApi {
       }
     } catch (e) {
       debugPrint(e.toString());
+      return teacher;
     }
   }
 }

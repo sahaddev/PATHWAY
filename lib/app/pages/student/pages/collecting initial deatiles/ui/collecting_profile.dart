@@ -69,8 +69,7 @@ class ProfleImageCollect extends StatelessWidget {
                                         .pikingImge());
                               },
                               icon: Icon(Icons.edit,
-                                  color:
-                                      Theme.of(context).colorScheme.background),
+                                  color: Theme.of(context).colorScheme.surface),
                             ),
                           ),
                         ),
@@ -103,4 +102,3 @@ class ProfleImageCollect extends StatelessWidget {
     );
   }
 }
-

@@ -41,7 +41,7 @@ class _VideoPlayMobState extends State<VideoPlayMob> {
   Widget build(BuildContext context) {
     //
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(),
@@ -54,8 +54,7 @@ class _VideoPlayMobState extends State<VideoPlayMob> {
                 children: [
                   GestureDetector(
                       onTap: () => Navigator.of(context).pop(),
-                      child:
-                          SvgPicture.asset("asset/icons/arrow-left.svg")),
+                      child: SvgPicture.asset("asset/icons/arrow-left.svg")),
                   const SizedBox(height: 20),
                   isLoading
                       ? ClipRRect(

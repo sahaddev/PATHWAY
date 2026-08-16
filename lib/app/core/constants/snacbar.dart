@@ -9,10 +9,10 @@ void buildShowSnacbar({
 }) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     behavior: SnackBarBehavior.floating,
-    backgroundColor: Theme.of(context).colorScheme.background,
+    backgroundColor: Theme.of(context).colorScheme.surface,
     margin: const EdgeInsets.all(0),
     content: AwesomeSnackbarContent(
-      title:title,
+      title: title,
       message: content,
       contentType: contentType,
     ),

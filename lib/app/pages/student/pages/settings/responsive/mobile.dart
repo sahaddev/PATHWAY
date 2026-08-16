@@ -20,7 +20,7 @@ class StudentSettingMob extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.onBackground,
+        backgroundColor: Theme.of(context).colorScheme.onSurface,
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -51,7 +51,7 @@ class StudentSettingMob extends StatelessWidget {
           )
         ],
       ),
-      backgroundColor: Theme.of(context).colorScheme.onBackground,
+      backgroundColor: Theme.of(context).colorScheme.onSurface,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(

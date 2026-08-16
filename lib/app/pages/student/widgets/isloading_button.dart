@@ -20,8 +20,8 @@ class BuildLoaderButton extends StatelessWidget {
       child: ElevatedButton(
           style: const ButtonStyle(
               backgroundColor:
-                  MaterialStatePropertyAll(Color.fromARGB(255, 0, 96, 175)),
-              shape: MaterialStatePropertyAll(BeveledRectangleBorder(
+                  WidgetStatePropertyAll(Color.fromARGB(255, 0, 96, 175)),
+              shape: WidgetStatePropertyAll(BeveledRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5))))),
           onPressed: function,
           child: isLoading

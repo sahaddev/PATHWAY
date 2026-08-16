@@ -32,7 +32,7 @@ class OtpScreen extends StatelessWidget {
     TextEditingController otp3Controller = TextEditingController();
     TextEditingController otp4Controller = TextEditingController();
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(
         leading: InkWell(
           onTap: () => Navigator.pop(context),
@@ -309,10 +309,10 @@ class BuildButtonOtp extends StatelessWidget {
       width: 150,
       child: ElevatedButton(
           style: ButtonStyle(
-              side: MaterialStatePropertyAll(
+              side: WidgetStatePropertyAll(
                   BorderSide(color: borderColor, width: 2)),
-              backgroundColor: MaterialStatePropertyAll(backgroColor),
-              shape: const MaterialStatePropertyAll(BeveledRectangleBorder(
+              backgroundColor: WidgetStatePropertyAll(backgroColor),
+              shape: const WidgetStatePropertyAll(BeveledRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5))))),
           onPressed: fun,
           child: Text(

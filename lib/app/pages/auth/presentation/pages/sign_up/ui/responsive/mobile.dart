@@ -8,7 +8,6 @@ import 'package:path_way_flu/app/pages/auth/presentation/pages/widget/text_field
 import 'package:path_way_flu/app/pages/auth/presentation/pages/widget/text_field_email.dart';
 import 'package:path_way_flu/app/pages/auth/presentation/pages/widget/text_field_password.dart';
 
-
 class SignUpMobLayOut extends StatelessWidget {
   final String directionText;
   const SignUpMobLayOut({super.key, required this.directionText});
@@ -21,9 +20,9 @@ class SignUpMobLayOut extends StatelessWidget {
     GlobalKey<FormState> formkey = GlobalKey();
     return Scaffold(
       appBar: AppBar(
-      backgroundColor: Theme.of(context).colorScheme.background,
+        backgroundColor: Theme.of(context).colorScheme.surface,
       ),
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
@@ -65,18 +64,16 @@ class SignUpMobLayOut extends StatelessWidget {
                       sufixIcon: false),
                   const SizedBox(height: 20),
                   BuilderTextFieldEmail(
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return "Enter your Email";
-                        } else {
-                          return null;
-                        }
-                      },
-                      prifixIcon: Icons.mail,
-                     
-                      controller: emailController,
-                     
-                      ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return "Enter your Email";
+                      } else {
+                        return null;
+                      }
+                    },
+                    prifixIcon: Icons.mail,
+                    controller: emailController,
+                  ),
                   const SizedBox(height: 20),
                   BuilderTextFieldPass(
                       validator: (value) {

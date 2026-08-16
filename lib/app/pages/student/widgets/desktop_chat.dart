@@ -114,17 +114,18 @@ class _ChatBoxState extends State<ChatBox> {
                               height: 35,
                               child: ElevatedButton(
                                   style: ButtonStyle(
-                                      shape: MaterialStatePropertyAll(
+                                      shape: WidgetStatePropertyAll(
                                           ContinuousRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(65))),
                                       backgroundColor:
-                                          const MaterialStatePropertyAll(
+                                          const WidgetStatePropertyAll(
                                               Colors.blue)),
                                   onPressed: () {
                                     context.read<StudentChatBloc>().add(
                                         StudentChatEvent.navigatingToChatScreen(
-                                            image: "${AuthApi.baseUrlImage}${state.list[index].profileImage!}",
+                                            image:
+                                                "${AuthApi.baseUrlImage}${state.list[index].profileImage!}",
                                             name: state.list[index].name,
                                             context: context));
                                   },
