@@ -62,6 +62,7 @@ class BuildHomeBox extends StatelessWidget {
         }
 
         return ListView.builder(
+          shrinkWrap: true,
           padding: const EdgeInsets.all(0),
           scrollDirection: Axis.vertical,
           physics: const BouncingScrollPhysics(),

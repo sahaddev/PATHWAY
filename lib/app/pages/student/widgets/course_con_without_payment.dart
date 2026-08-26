@@ -25,29 +25,32 @@ class CourseContent extends StatelessWidget {
               fontSize: 32,
             ),
           ),
-          const SizedBox(width: 20),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(creator,
+          const SizedBox(width: 15),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  creator,
                   style: const TextStyle(
                     fontSize: 18,
                     height: 1,
-                  )),
-              const SizedBox(height: 10),
-              ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 230),
-                child: Text(title,
-                    style: kSubtitleTextSyule.copyWith(
-                      fontWeight: FontWeight.w600,
-                      height: .1,
-                    )),
-              ),
-            ],
+                  ),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  title,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: kSubtitleTextSyule.copyWith(
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
+          const SizedBox(width: 10),
           Container(
-            margin: const EdgeInsets.only(left: 20),
             width: 40,
             height: 40,
             decoration: const BoxDecoration(

@@ -29,6 +29,8 @@ import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher
 import 'package:path_way_flu/app/pages/teacher/pages/teacherChat/bloc/teacher_chat_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorial%20form/bloc/tutorial_adding_form_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorialUpdateForm/bloc/tutorial_update_bloc.dart';
+import 'package:path_way_flu/app/data/model/lession.dart';
+import 'package:path_way_flu/app/pages/student/pages/deatile%20page%20without%20pay/ui/deatiles_page_with_outpay.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/ui/see_all.dart';
 import 'package:path_way_flu/app/pages/student/pages/student%20home/ui/student_home.dart';
 import 'package:path_way_flu/firebase_options.dart';
@@ -122,7 +124,19 @@ class _MyAppState extends State<MyApp> {
         ],
         theme: lightTheme,
         darkTheme: darkTheme,
-        home: const SeeAll(),
+        home: StudentPagePayment(
+          lesson: Lesson(
+            id: '1',
+            title: 'Calculus Fundamentals',
+            subject: 'Mathematics',
+            creatorId: 'c1',
+            coverImage: '',
+            creatorName: 'Dr. Smith',
+            price: 499,
+            watchTime: 120,
+            lessonId: ['l1', 'l2', 'l3'],
+          ),
+        ),
       ),
     );
   }
