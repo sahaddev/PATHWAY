@@ -30,7 +30,6 @@ import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher
 import 'package:path_way_flu/app/pages/teacher/pages/teacherChat/bloc/teacher_chat_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorial%20form/bloc/tutorial_adding_form_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorialUpdateForm/bloc/tutorial_update_bloc.dart';
-import 'package:path_way_flu/app/pages/auth/presentation/pages/indroduction/onbording_screen.dart';
 import 'package:path_way_flu/firebase_options.dart';
 import 'package:path_way_flu/app/core/l10n/l10n.dart';
 
@@ -122,7 +121,7 @@ class _MyAppState extends State<MyApp> {
         ],
         theme: lightTheme,
         darkTheme: darkTheme,
-        home: const OnBordingScreen(),
+        home: const SpleshScreen(),
       ),
     );
   }
