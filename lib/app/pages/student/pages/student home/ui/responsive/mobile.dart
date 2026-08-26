@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:path_way_flu/app/core/constants/constants.dart';
 import 'package:path_way_flu/app/core/constants/subject_list.dart';
 import 'package:path_way_flu/app/data/middleware/auth.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/ui/see_all.dart';
 import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/student/pages/student%20home/bloc/student_home_bloc.dart';
-import 'package:path_way_flu/app/pages/teacher/widgets/build_home_topbox.dart';
 import 'package:path_way_flu/app/pages/teacher/widgets/home_card.dart';
 import 'package:path_way_flu/main.dart';
 
@@ -18,145 +15,432 @@ class StudentHomeMob extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.surface,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
-        title: Row(
-          children: [
-            SizedBox(
-              height: 45,
-              width: 45,
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(70),
-                  child: Image(
-                    image: NetworkImage("${AuthApi.baseUrlImage}$userProfile"),
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  AppLocalizations.of(context).welcome,
-                  style: GoogleFonts.aBeeZee(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: const Color.fromARGB(255, 90, 90, 90),
-                  ),
-                ),
-                Text(
-                  userName ?? "null",
-                  style: const TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            GestureDetector(
-                onTap: () {
-                  context
-                      .read<StudentHomeBloc>()
-                      .add(StudentHomeEvent.navigatingSeeAll(context: context));
-                },
-                child: LottieBuilder.asset(
-                  "asset/animation_icon/Animation - 1711734592445.json",
-                  height: 45,
-                  fit: BoxFit.fill,
-                )),
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 20, right: 10),
+      backgroundColor: const Color(0xFFF8FAFC),
+      body: SafeArea(
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 20),
-              Text(AppLocalizations.of(context).suggestedyou,
-                  style: kTitleTextStyle),
-              const SizedBox(height: 15),
-              const BuildHomeTopBox(),
-              const SizedBox(height: 20),
+              // Top Bar Header: Profile Avatar | EduBloom Logo | Notification Icon
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context).topics,
-                      style: kTitleTextStyle),
+                  Container(
+                    width: 44,
+                    height: 44,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(color: Colors.white, width: 2),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withValues(alpha: 0.05),
+                          blurRadius: 6,
+                          offset: const Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(22),
+                      child: (userProfile != null && userProfile!.isNotEmpty)
+                          ? Image.network(
+                              "${AuthApi.baseUrlImage}$userProfile",
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Container(
+                                color: const Color(0xFF4F46E5),
+                                child: const Icon(Icons.person,
+                                    color: Colors.white),
+                              ),
+                            )
+                          : Image.asset(
+                              "asset/profiles/image1.png",
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Container(
+                                color: const Color(0xFF4F46E5),
+                                child: const Icon(Icons.person,
+                                    color: Colors.white),
+                              ),
+                            ),
+                    ),
+                  ),
+                  const Spacer(),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Path",
+                        style: GoogleFonts.outfit(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFF5B9BF3),
+                        ),
+                      ),
+                      Text(
+                        "Way",
+                        style: GoogleFonts.outfit(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xFFEC7096),
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      const Text(
+                        "🎓",
+                        style: TextStyle(fontSize: 18),
+                      ),
+                    ],
+                  ),
+                  const Spacer(),
                   InkWell(
                     onTap: () {
                       context.read<StudentHomeBloc>().add(
-                          StudentHomeEvent.navigatingSeeAll(context: context));
+                            StudentHomeEvent.navigatingSeeAll(context: context),
+                          );
                     },
-                    child: Text(AppLocalizations.of(context).seeall,
-                        style: kSubtitleTextSyule.copyWith(color: kBlueColor)),
+                    borderRadius: BorderRadius.circular(22),
+                    child: Container(
+                      width: 44,
+                      height: 44,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Colors.grey.shade200),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.03),
+                            blurRadius: 8,
+                            offset: const Offset(0, 2),
+                          )
+                        ],
+                      ),
+                      child: const Icon(
+                        Icons.notifications_none_rounded,
+                        color: Colors.black87,
+                        size: 22,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              BlocBuilder<StudentHomeBloc, StudentHomeState>(
-                builder: (context, state) {
-                  return Wrap(
-                      spacing: 10,
-                      runSpacing: 5,
-                      children: List.generate(
-                          subjectList.length,
-                          (index) => GestureDetector(
-                                onTap: () => context
-                                    .read<StudentHomeBloc>()
-                                    .add(StudentHomeEvent.swichingSubjectList(
-                                        index: index)),
-                                child: Chip(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                      side: BorderSide(
-                                          color: state.selectedTopic == index
-                                              ? Colors.blue[400]!
-                                              : Colors.transparent)),
-                                  label: Text(subjectList[index]['name']!),
-                                  backgroundColor: Colors.grey[100],
-                                  labelStyle:
-                                      GoogleFonts.aBeeZee(color: Colors.grey),
+
+              const SizedBox(height: 20),
+
+              // Search Bar Container
+              Container(
+                height: 52,
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(color: Colors.grey.shade200),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.02),
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Icon(Icons.search_rounded,
+                        color: Colors.grey.shade400, size: 22),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Try "Mathematics"',
+                          hintStyle: GoogleFonts.inter(
+                            color: Colors.grey.shade400,
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          border: InputBorder.none,
+                          isDense: true,
+                        ),
+                      ),
+                    ),
+                    ShaderMask(
+                      shaderCallback: (bounds) => const LinearGradient(
+                        colors: [Color(0xFFA855F7), Color(0xFFEC4899)],
+                      ).createShader(bounds),
+                      child: const Icon(
+                        Icons.auto_awesome,
+                        color: Colors.white,
+                        size: 22,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // Featured Banner (Biomedical Sciences Carousel Card)
+              Container(
+                width: double.infinity,
+                height: 185,
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(24),
+                    gradient: const LinearGradient(
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                      colors: [
+                        Color(0xFFB0D8EA),
+                        Color(0xFFEEF3F7),
+                        Color(0xFFF1D2DF),
+                      ],
+                    )),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Biomedical\nSciences",
+                                style: GoogleFonts.outfit(
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                  color: const Color(0xFF1E293B),
+                                  height: 1.15,
                                 ),
-                              )));
-                },
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                "46 class",
+                                style: GoogleFonts.inter(
+                                  fontSize: 13,
+                                  color: const Color(0xFF64748B),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "388 Applicants",
+                                style: GoogleFonts.inter(
+                                  fontSize: 11,
+                                  color: const Color(0xFF64748B),
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                              const SizedBox(height: 6),
+                              SizedBox(
+                                height: 28,
+                                width: 120,
+                                child: Stack(
+                                  children: [
+                                    for (int i = 0; i < 5; i++)
+                                      Positioned(
+                                        left: i * 18.0,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                color: Colors.white,
+                                                width: 1.5),
+                                          ),
+                                          child: CircleAvatar(
+                                            radius: 12,
+                                            backgroundImage: AssetImage(
+                                                "asset/profiles/image${i == 0 ? 1 : i == 1 ? 22 : i == 2 ? 33 : i == 3 ? 44 : 55}.png"),
+                                          ),
+                                        ),
+                                      ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Center(
+                        child: Container(
+                          height: 130,
+                          width: 130,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(20),
+                            child: Image.asset(
+                              "asset/images/brain.png",
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Container(
+                                color: const Color(0xFFE2E8F0),
+                                child: const Icon(Icons.psychology,
+                                    size: 50, color: Color(0xFF6366F1)),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 10),
-              BlocBuilder<StudentHomeBloc, StudentHomeState>(
-                builder: (context, state) {
-                  return Text(state.currentSubject, style: kTitleTextStyle);
-                },
+
+              const SizedBox(height: 12),
+
+              // Banner Indicator Dots
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 22,
+                    height: 8,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFC4B5FD),
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Container(
+                    width: 8,
+                    height: 8,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFE2E8F0),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  Container(
+                    width: 8,
+                    height: 8,
+                    decoration: const BoxDecoration(
+                      color: Color(0xFFE2E8F0),
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(height: 15),
-              BlocBuilder<StudentHomeBloc, StudentHomeState>(
-                builder: (context, state) {
-                  return BuildHomeBox(
-                    currentsub: state.currentSubject,
-                    isSelected: state.selectedTopic,
-                  );
-                },
+
+              const SizedBox(height: 20),
+
+              // Upgrade to Premium Card
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(44),
+                  border: Border.all(color: Colors.grey.shade200),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withValues(alpha: 0.02),
+                      blurRadius: 8,
+                      offset: const Offset(0, 2),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 234, 234, 234),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.workspace_premium_rounded,
+                        color: Color(0xFFF59E0B),
+                        size: 26,
+                      ),
+                    ),
+                    const SizedBox(width: 14),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Upgrade to Premium",
+                            style: GoogleFonts.outfit(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: const Color(0xFF1E293B),
+                            ),
+                          ),
+                          const SizedBox(height: 2),
+                          Text(
+                            "Go premium for free classes",
+                            style: GoogleFonts.inter(
+                              fontSize: 12,
+                              color: const Color(0xFF94A3B8),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF1E293B),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Text(
+                        "More",
+                        style: GoogleFonts.inter(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 15),
+
+              const SizedBox(height: 24),
+
+              // Recommended for You Section Header
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(AppLocalizations.of(context).featurecourse,
-                      style: kTitleTextStyle),
+                  Text(
+                    "Recommended for you",
+                    style: GoogleFonts.outfit(
+                      fontSize: 19,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF1E293B),
+                    ),
+                  ),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (ctx) => const SeeAll()));
+                      context.read<StudentHomeBloc>().add(
+                            StudentHomeEvent.navigatingSeeAll(context: context),
+                          );
                     },
-                    child: Text(AppLocalizations.of(context).seeall,
-                        style: kSubtitleTextSyule.copyWith(color: kBlueColor)),
+                    child: Text(
+                      "See all",
+                      style: GoogleFonts.inter(
+                        fontSize: 13,
+                        color: const Color(0xFF94A3B8),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 15),
+
+              const SizedBox(height: 16),
               BlocBuilder<StudentHomeBloc, StudentHomeState>(
                 builder: (context, state) {
                   return BuildHomeBox(
@@ -164,7 +448,7 @@ class StudentHomeMob extends StatelessWidget {
                     isSelected: state.selectedTopic,
                   );
                 },
-              )
+              ),
             ],
           ),
         ),

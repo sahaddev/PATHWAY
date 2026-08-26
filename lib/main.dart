@@ -12,7 +12,6 @@ import 'package:path_way_flu/app/pages/auth/presentation/pages/direction/bloc/di
 import 'package:path_way_flu/app/pages/auth/presentation/pages/forgot/bloc/forgot_bloc.dart';
 import 'package:path_way_flu/app/pages/auth/presentation/pages/sign_in/bloc/sign_in_bloc.dart';
 import 'package:path_way_flu/app/pages/auth/presentation/pages/sign_up/bloc/sign_up_bloc.dart';
-import 'package:path_way_flu/app/pages/auth/presentation/pages/splash_screen_ui.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/bloc/see_all_bloc.dart';
 import 'package:path_way_flu/app/pages/student/pages/chat/bloc/student_chat_bloc.dart';
 import 'package:path_way_flu/app/pages/student/pages/collecting%20initial%20deatiles/bloc/student_init_deatiles_bloc.dart';
@@ -30,6 +29,7 @@ import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher
 import 'package:path_way_flu/app/pages/teacher/pages/teacherChat/bloc/teacher_chat_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorial%20form/bloc/tutorial_adding_form_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorialUpdateForm/bloc/tutorial_update_bloc.dart';
+import 'package:path_way_flu/app/pages/student/pages/student%20home/ui/student_home.dart';
 import 'package:path_way_flu/firebase_options.dart';
 import 'package:path_way_flu/app/core/l10n/l10n.dart';
 
@@ -121,7 +121,7 @@ class _MyAppState extends State<MyApp> {
         ],
         theme: lightTheme,
         darkTheme: darkTheme,
-        home: const SpleshScreen(),
+        home: const StudentHome(),
       ),
     );
   }
