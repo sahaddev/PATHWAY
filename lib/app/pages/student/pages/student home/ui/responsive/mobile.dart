@@ -128,53 +128,9 @@ class StudentHomeMob extends StatelessWidget {
               const SizedBox(height: 20),
 
               // Search Bar Container
-              Container(
-                height: 52,
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(color: Colors.grey.shade200),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.02),
-                      blurRadius: 10,
-                      offset: const Offset(0, 3),
-                    ),
-                  ],
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search_rounded,
-                        color: Colors.grey.shade400, size: 22),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Try "Mathematics"',
-                          hintStyle: GoogleFonts.inter(
-                            color: Colors.grey.shade400,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                          ),
-                          border: InputBorder.none,
-                          isDense: true,
-                        ),
-                      ),
-                    ),
-                    ShaderMask(
-                      shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Color(0xFFA855F7), Color(0xFFEC4899)],
-                      ).createShader(bounds),
-                      child: const Icon(
-                        Icons.auto_awesome,
-                        color: Colors.white,
-                        size: 22,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              SearchBarHome(
+                  searchController: TextEditingController(),
+                  onChanged: (p0) {}),
 
               const SizedBox(height: 20),
 
@@ -441,17 +397,81 @@ class StudentHomeMob extends StatelessWidget {
               ),
 
               const SizedBox(height: 16),
-              BlocBuilder<StudentHomeBloc, StudentHomeState>(
-                builder: (context, state) {
-                  return BuildHomeBox(
-                    currentsub: state.currentSubject,
-                    isSelected: state.selectedTopic,
-                  );
-                },
+              Expanded(
+                child: BlocBuilder<StudentHomeBloc, StudentHomeState>(
+                  builder: (context, state) {
+                    return BuildHomeBox(
+                      currentsub: state.currentSubject,
+                      isSelected: state.selectedTopic,
+                    );
+                  },
+                ),
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class SearchBarHome extends StatelessWidget {
+  final TextEditingController searchController;
+  final Function(String) onChanged;
+  const SearchBarHome({
+    super.key,
+    required this.searchController,
+    required this.onChanged,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 52,
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        border: Border.all(color: Colors.grey.shade200),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.02),
+            blurRadius: 10,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        children: [
+          Icon(Icons.search_rounded, color: Colors.grey.shade400, size: 22),
+          const SizedBox(width: 10),
+          Expanded(
+            child: TextField(
+              controller: searchController,
+              onChanged: onChanged,
+              decoration: InputDecoration(
+                hintText: 'Try "Mathematics"',
+                hintStyle: GoogleFonts.inter(
+                  color: Colors.grey.shade400,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                ),
+                border: InputBorder.none,
+                isDense: true,
+              ),
+            ),
+          ),
+          ShaderMask(
+            shaderCallback: (bounds) => const LinearGradient(
+              colors: [Color(0xFFA855F7), Color(0xFFEC4899)],
+            ).createShader(bounds),
+            child: const Icon(
+              Icons.auto_awesome,
+              color: Colors.white,
+              size: 22,
+            ),
+          ),
+        ],
       ),
     );
   }

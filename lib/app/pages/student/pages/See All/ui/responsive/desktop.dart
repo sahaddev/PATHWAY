@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_way_flu/app/core/l10n/app_localizations.dart';
 import 'package:path_way_flu/app/pages/student/pages/See%20All/bloc/see_all_bloc.dart';
-import 'package:path_way_flu/app/pages/student/widgets/see_all_card.dart';
 
 class SeeAllDesk extends StatelessWidget {
   const SeeAllDesk({super.key});
@@ -16,11 +15,7 @@ class SeeAllDesk extends StatelessWidget {
       appBar: AppBar(
         toolbarHeight: 70,
         title: TextFormField(
-          onChanged: (value) {
-            context
-                .read<SeeAllBloc>()
-                .add(SeeAllEvent.fulturedValue(typeText: value));
-          },
+          onChanged: (value) {},
           decoration: InputDecoration(
               border: const UnderlineInputBorder(borderSide: BorderSide.none),
               hintText: 'Search',
@@ -57,7 +52,6 @@ class SeeAllDesk extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 20),
-              const ProdectCard(count: 6)
             ],
           ),
         ),

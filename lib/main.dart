@@ -29,6 +29,7 @@ import 'package:path_way_flu/app/pages/teacher/pages/teacher%20home/bloc/teacher
 import 'package:path_way_flu/app/pages/teacher/pages/teacherChat/bloc/teacher_chat_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorial%20form/bloc/tutorial_adding_form_bloc.dart';
 import 'package:path_way_flu/app/pages/teacher/pages/tutorialUpdateForm/bloc/tutorial_update_bloc.dart';
+import 'package:path_way_flu/app/pages/student/pages/See%20All/ui/see_all.dart';
 import 'package:path_way_flu/app/pages/student/pages/student%20home/ui/student_home.dart';
 import 'package:path_way_flu/firebase_options.dart';
 import 'package:path_way_flu/app/core/l10n/l10n.dart';
@@ -121,7 +122,7 @@ class _MyAppState extends State<MyApp> {
         ],
         theme: lightTheme,
         darkTheme: darkTheme,
-        home: const StudentHome(),
+        home: const SeeAll(),
       ),
     );
   }
